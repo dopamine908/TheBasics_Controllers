@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
 /*
 |--------------------------------------------------------------------------
 | 當物件被當做函數來呼叫時,可以只打controller的名稱就好
@@ -22,3 +26,4 @@ Route::get('/', function () {
 */
 
 Route::get('當物件被當做函數來呼叫時/{value}', 'InvokeController');
+
