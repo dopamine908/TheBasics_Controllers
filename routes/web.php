@@ -74,3 +74,16 @@ Route::resource('只有這幾個route不行', 'ExceptResourceController', [
     'except' => ['index', 'store', 'update', 'destroy']
 ]);
 
+/*
+|--------------------------------------------------------------------------
+| apiResource = resource 扣掉 create 和 edit (排除用來顯示 HTML 模板的 Route)
+|--------------------------------------------------------------------------
+指令 ： php artisan make:controller apiResourceController --api
+也可以使用Route::apiResources （要加Ｓ）一次註冊多個
+*/
+Route::apiResource('apiResourceRoute', 'apiResourceController');
+
+Route::apiResources([
+    'apiResourceRoute_1' => 'apiResourceController1',
+    'apiResourceRoute_2' => 'apiResourceController2'
+]);
