@@ -40,3 +40,21 @@ Route::get('只有我要經過auth中介層', 'MiddlewareController@OnlyFunction
 Route::get('只有我不用經過auth中介層', 'MiddlewareController@ExceptFunction'); //Route 2
 Route::get('我被指定要經過auth中介層', 'MiddlewareController@MiddlewareAuth')->middleware('auth'); //Route 3
 
+/*
+|--------------------------------------------------------------------------
+| 可以透過 php artisan make:controller ControllerName --resource 建立一整組route
+|--------------------------------------------------------------------------
+這組Route裡面含有基礎CRUD功能
+若想跟model綁定 可以改下
+php artisan make:controller PhotoController --resource --model=ModelName
+來源： framework/src/Illuminate/Routing/Router.php
+也可以透過下面註解掉的方式一次註冊多個
+參考： https://docs.laravel-dojo.com/laravel/5.5/controllers#resource-controllers
+*/
+Route::resource('RouteResource', 'ResourceController');
+Route::resource('UserResource', 'UserController');
+
+//Route::resources([
+//    'RouteResource' => 'ResourceController',
+//    'UserResource' => 'UserController'
+//]);
