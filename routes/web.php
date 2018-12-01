@@ -58,3 +58,19 @@ Route::resource('UserResource', 'UserController');
 //    'RouteResource' => 'ResourceController',
 //    'UserResource' => 'UserController'
 //]);
+
+/*
+|--------------------------------------------------------------------------
+| 可以控制resource controller哪些function可以使用
+|--------------------------------------------------------------------------
+類似中介層的only,except用法
+*/
+
+Route::resource('只有這幾個route可以', 'OnlyResourceController', [
+    'only' => ['index', 'create']
+]);
+
+Route::resource('只有這幾個route不行', 'ExceptResourceController', [
+    'except' => ['index', 'store', 'update', 'destroy']
+]);
+
