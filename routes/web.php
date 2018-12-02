@@ -117,3 +117,13 @@ Route::resource('這個變數接口會被換掉', 'ResourceSettingController',
         ]
     ]);
 
+/*
+|--------------------------------------------------------------------------
+| Controller方法注入（以Request為例）
+|--------------------------------------------------------------------------
+第一個為普通的時候 （/seeRequest?a=1&b=2）
+第二個為有另外帶入變數的時候（/seeRequest/另外一個變數?a=1&b=2）
+*/
+Route::get('seeRequest', 'WorkController@seeRequest');
+
+Route::get('seeRequest/{var}', 'WorkController@seeRequestAndVar');

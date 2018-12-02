@@ -20,5 +20,23 @@ class WorkController extends Controller
         $this->User = $userRepository;
     }
 
+    /**
+     * /seeRequest?a=1&b=2
+     *
+     * @param Request $request
+     */
+    public function seeRequest(Request $request) {
+        dump($request->all());
+    }
 
+    /**
+     * /seeRequest/另外一個變數?a=1&b=2
+     *
+     * @param Request $request
+     * @param $var
+     */
+    public function seeRequestAndVar(Request $request, $var) {
+        dump($request->all());
+        dump($var);
+    }
 }
