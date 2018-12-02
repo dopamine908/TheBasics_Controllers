@@ -87,3 +87,33 @@ Route::apiResources([
     'apiResourceRoute_1' => 'apiResourceController1',
     'apiResourceRoute_2' => 'apiResourceController2'
 ]);
+
+/*
+|--------------------------------------------------------------------------
+| Resource controller 的一些設定
+|--------------------------------------------------------------------------
+可以用names覆蓋原本設定的命名
+parameters可以將變數的名稱置換掉
+這個變數接口會被換掉/{這個變數接口會被換掉} ＝＞ 這個變數接口會被換掉/{new_var_name}
+*/
+
+Route::resource('改resource_controller_route的名字', 'ResourceSettingController',
+    [
+        'names' => [
+            'create' => 'new_name'
+        ]
+    ]);
+
+
+Route::get('看看更改設定之後的結果', function () {
+    dump('改名字之後使用新名字拿到的uri');
+    dump(route('new_name'));
+});
+
+Route::resource('這個變數接口會被換掉', 'ResourceSettingController',
+    [
+        'parameters' => [
+            '這個變數接口會被換掉' => 'new_var_name'
+        ]
+    ]);
+
